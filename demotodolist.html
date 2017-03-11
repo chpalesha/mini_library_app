@@ -1,0 +1,22 @@
+<head>
+  <title>Library App</title>
+</head>
+
+<body>
+     <div class="navbar">
+         <div class="navbar-inner">
+             <a class="brand" href="#">Meteor Mini Library App</a>
+             <ul class="nav pull-right"> {{> loginButtons align = "right" }}</ul>
+         </div>
+     </div>
+    <div class="container mainContent">
+         <div class="row">
+             <div class="span3">
+                <p>{{>lists}}</p>
+             </div>
+             <div class="span9">
+                <p>{{>todos}}</p>
+             </div>
+         </div>
+    </div>
+</body>

@@ -1,0 +1,57 @@
+<template name="todos">
+    <div class="page-header">
+        <h1>{{list.name}} <small>Book List</small>
+        </h1>
+        {{#if currentUser}}
+        <input class="input-small isbn" placeholder="ISBN" type="text" name="isbn" id="isbn">
+        <input class="input-medium todotext" placeholder="Book Name" type="text" name="todotexthead" value="" id="todotexthead"/>
+        <input class="input-medium author" placeholder="Author Name" type="text" name="author" value="" id="author" />
+        <input class="input-small price" placeholder="Price" type="number" name="price" id="price" />
+        <input class="input-small bcount" placeholder="No. Of Books" type="number" name="bcount" value="" id="bcount" />
+        {{/if}}
+    </div>
+    <table class="table table-striped table-hover table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>ISBN</th>
+                <th>Book Name</th>
+                <th>Author Name</th>
+                <th>Price</th>
+                <th>Issued</th>
+                <th>In library</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each todolist}}
+                {{>todolistitem}}
+            {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="todolistitem">
+    <tr class="todoitem {{done_class}}">
+        <td>{{isbn}}</td>
+
+
+        {{#if editing_todo}}
+        {{#if currentUser}}
+        <td><input class="todotext2" type="text" name="todotext2" value="{{todotext}}" id="todotext2"></td>
+        <td><input class="todotext3" type="text" name="todotext3" value="{{author}}" id="todotext3"></td>
+        <td><input class="todotext4" type="text" name="todotext4" value="{{price}}" id="todotext4"></td>
+        {{else}}
+        <td class="todoitemtext">{{todotext}}</td>
+        <td class="authoritemtext">{{author}}</td>
+        <td class="priceitemtext">{{price}}</td>
+        {{/if}}
+        {{else}}
+        <td class="todoitemtext">{{todotext}}</td>
+        <td class="authoritemtext">{{author}}</td>
+        <td class="priceitemtext">{{price}}</td>
+        {{/if}}
+        <td class="bissued">{{issued}} </td>
+        <td class="counter">{{count}} </td>
+        <td><i class="icon icon-trash removetodo"></i> </td>
+    </tr>
+</template>
